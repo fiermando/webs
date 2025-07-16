@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rekomendasi Produk Terbaik</title>
+    <title>Instagram Shop - Produk Pilihan Terbaik</title>
     <style>
         * {
             margin: 0;
@@ -15,7 +15,8 @@
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
+            min-height: 100vh;
         }
 
         .container {
@@ -44,6 +45,17 @@
             font-weight: bold;
             color: white;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .instagram-icon {
+            background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2rem;
         }
 
         nav ul {
@@ -67,12 +79,12 @@
 
         .hero {
             text-align: center;
-            padding: 4rem 0;
+            padding: 3rem 0;
             color: white;
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
@@ -83,146 +95,219 @@
             opacity: 0.9;
         }
 
-        .cta-button {
+        .instagram-handle {
             display: inline-block;
-            background: #ff6b6b;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .products {
+            background: white;
+            padding: 3rem 0;
+            margin-top: 1rem;
+        }
+
+        .products h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.2rem;
+            color: #333;
+        }
+
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .insta-post {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .insta-post:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .post-header {
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .profile-pic {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .post-info h4 {
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        .post-info span {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .post-image {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .post-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.3);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .insta-post:hover .post-image::before {
+            opacity: 1;
+        }
+
+        .post-image::after {
+            content: '🛒';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .insta-post:hover .post-image::after {
+            opacity: 1;
+        }
+
+        .post-content {
+            padding: 1rem;
+        }
+
+        .post-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .post-description {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .post-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #e1306c;
+            margin-bottom: 1rem;
+        }
+
+        .post-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 0.5rem;
+            border-top: 1px solid #eee;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .action-btn:hover {
+            transform: scale(1.2);
+        }
+
+        .shop-btn {
+            background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .shop-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(131, 58, 180, 0.3);
+        }
+
+        .instagram-cta {
+            text-align: center;
+            padding: 3rem 0;
+            background: #f8f9fa;
+        }
+
+        .instagram-cta h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .follow-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045);
             color: white;
             padding: 1rem 2rem;
             text-decoration: none;
             border-radius: 50px;
             font-weight: bold;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+            box-shadow: 0 5px 15px rgba(131, 58, 180, 0.3);
         }
 
-        .cta-button:hover {
-            background: #ff5252;
+        .follow-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
-        }
-
-        .products {
-            background: white;
-            padding: 4rem 0;
-            margin-top: 2rem;
-        }
-
-        .products h2 {
-            text-align: center;
-            margin-bottom: 3rem;
-            font-size: 2.5rem;
-            color: #333;
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .product-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            font-weight: bold;
-        }
-
-        .product-content {
-            padding: 1.5rem;
-        }
-
-        .product-title {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: #333;
-        }
-
-        .product-description {
-            color: #666;
-            margin-bottom: 1rem;
-            line-height: 1.5;
-        }
-
-        .product-price {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #ff6b6b;
-            margin-bottom: 1rem;
-        }
-
-        .product-button {
-            display: inline-block;
-            background: #4ecdc4;
-            color: white;
-            padding: 0.8rem 1.5rem;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            width: 100%;
-            text-align: center;
-        }
-
-        .product-button:hover {
-            background: #45b7aa;
-            transform: translateY(-2px);
-        }
-
-        .features {
-            background: #f8f9fa;
-            padding: 4rem 0;
-        }
-
-        .features h2 {
-            text-align: center;
-            margin-bottom: 3rem;
-            font-size: 2.5rem;
-            color: #333;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            text-align: center;
-            padding: 2rem;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            border-radius: 50%;
-            margin: 0 auto 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2rem;
+            box-shadow: 0 8px 20px rgba(131, 58, 180, 0.4);
         }
 
         footer {
@@ -241,7 +326,7 @@
 
         .footer-section h3 {
             margin-bottom: 1rem;
-            color: #ff6b6b;
+            color: #e1306c;
         }
 
         .footer-section a {
@@ -252,7 +337,7 @@
         }
 
         .footer-section a:hover {
-            color: #ff6b6b;
+            color: #e1306c;
         }
 
         @media (max-width: 768px) {
@@ -269,6 +354,10 @@
                 flex-direction: column;
                 gap: 1rem;
             }
+
+            .instagram-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -276,13 +365,16 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <a href="#" class="logo">🛍️Kontenku</a>
+                <a href="#" class="logo">
+                    <span class="instagram-icon">📷</span>
+                    InstagramShop
+                </a>
                 <nav>
                     <ul>
-                        <li><a href="#home">Beranda</a></li>
-                        <li><a href="#products">Produk</a></li>
-                        <li><a href="#about">Tentang</a></li>
-                        <li><a href="#contact">Kontak</a></li>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#instagram">Instagram</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </nav>
             </div>
@@ -291,116 +383,189 @@
 
     <section class="hero" id="home">
         <div class="container">
-            <h1>Temukan Produk Terbaik Pilihan Kami</h1>
-            <p>Rekomendasi produk berkualitas dengan harga terjangkau, sudah direview dan diuji langsung</p>
-            <a href="#products" class="cta-button">Lihat Produk Sekarang</a>
+            <h1>Produk Pilihan dari Instagram Kami</h1>
+            <p>Temukan produk-produk terbaik yang telah direview dan direkomendasikan di Instagram</p>
+            <div class="instagram-handle">@namakamu_shop</div>
+            <a href="#products" class="follow-btn">Lihat Produk Terbaru</a>
         </div>
     </section>
 
     <section class="products" id="products">
         <div class="container">
-            <h2>Produk Pilihan Terbaik</h2>
-            <div class="product-grid">
-                <div class="product-card">
-                    <div class="product-image">
-                        📱 Smartphone
+            <h2>📱 Produk dari Instagram Stories & Posts</h2>
+            <div class="instagram-grid">
+                
+                <!-- Post 1 -->
+                <div class="insta-post" onclick="window.open('https://shope.ee/LINK_AFILIASI_1', '_blank')">
+                    <div class="post-header">
+                        <div class="profile-pic">NS</div>
+                        <div class="post-info">
+                            <h4>namakamu_shop</h4>
+                            <span>Jakarta • Sponsored</span>
+                        </div>
                     </div>
-                    <div class="product-content">
-                        <h3 class="product-title">Smartphone Android Terbaru</h3>
-                        <p class="product-description">Smartphone dengan performa tinggi, kamera jernih, dan baterai tahan lama. Cocok untuk gaming dan fotografi.</p>
-                        <div class="product-price">Rp 2.999.000</div>
-                        <a href="#" class="product-button">Beli Sekarang</a>
+                    <div class="post-image">
+                        📱
                     </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        💻 Laptop
-                    </div>
-                    <div class="product-content">
-                        <h3 class="product-title">Laptop Gaming & Kerja</h3>
-                        <p class="product-description">Laptop powerful untuk gaming dan produktivitas. Prosesor cepat, RAM besar, dan desain yang elegan.</p>
-                        <div class="product-price">Rp 8.999.000</div>
-                        <a href="#" class="product-button">Beli Sekarang</a>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        🎧 Headphone
-                    </div>
-                    <div class="product-content">
-                        <h3 class="product-title">Headphone Wireless Premium</h3>
-                        <p class="product-description">Headphone dengan kualitas suara premium, noise cancelling, dan design yang nyaman untuk penggunaan lama.</p>
-                        <div class="product-price">Rp 1.299.000</div>
-                        <a href="#" class="product-button">Beli Sekarang</a>
+                    <div class="post-content">
+                        <div class="post-title">iPhone 15 Pro Max</div>
+                        <div class="post-description">Smartphone terbaru dengan kamera profesional dan performa tinggi. Perfect untuk content creator!</div>
+                        <div class="post-price">Rp 18.999.000</div>
+                        <div class="post-actions">
+                            <div class="action-buttons">
+                                <button class="action-btn">❤️</button>
+                                <button class="action-btn">💬</button>
+                                <button class="action-btn">📤</button>
+                            </div>
+                            <a href="https://shope.ee/LINK_AFILIASI_1" class="shop-btn" target="_blank">BELI</a>
+                        </div>
                     </div>
                 </div>
 
-                <div class="product-card">
-                    <div class="product-image">
-                        ⌚ Smartwatch
+                <!-- Post 2 -->
+                <div class="insta-post" onclick="window.open('https://shope.ee/LINK_AFILIASI_2', '_blank')">
+                    <div class="post-header">
+                        <div class="profile-pic">NS</div>
+                        <div class="post-info">
+                            <h4>namakamu_shop</h4>
+                            <span>Jakarta • Sponsored</span>
+                        </div>
                     </div>
-                    <div class="product-content">
-                        <h3 class="product-title">Smartwatch Multifungsi</h3>
-                        <p class="product-description">Smartwatch canggih dengan fitur kesehatan, GPS, dan notifikasi smartphone. Tahan air dan baterai awet.</p>
-                        <div class="product-price">Rp 1.799.000</div>
-                        <a href="#" class="product-button">Beli Sekarang</a>
+                    <div class="post-image">
+                        👟
+                    </div>
+                    <div class="post-content">
+                        <div class="post-title">Sneakers Premium</div>
+                        <div class="post-description">Sepatu sneakers kualitas premium, nyaman dipakai sehari-hari. Cocok untuk gaya kasual dan olahraga.</div>
+                        <div class="post-price">Rp 899.000</div>
+                        <div class="post-actions">
+                            <div class="action-buttons">
+                                <button class="action-btn">❤️</button>
+                                <button class="action-btn">💬</button>
+                                <button class="action-btn">📤</button>
+                            </div>
+                            <a href="https://shope.ee/LINK_AFILIASI_2" class="shop-btn" target="_blank">BELI</a>
+                        </div>
                     </div>
                 </div>
 
-                <div class="product-card">
-                    <div class="product-image">
-                        📷 Kamera
+                <!-- Post 3 -->
+                <div class="insta-post" onclick="window.open('https://tokopedia.link/LINK_AFILIASI_3', '_blank')">
+                    <div class="post-header">
+                        <div class="profile-pic">NS</div>
+                        <div class="post-info">
+                            <h4>namakamu_shop</h4>
+                            <span>Jakarta • Sponsored</span>
+                        </div>
                     </div>
-                    <div class="product-content">
-                        <h3 class="product-title">Kamera Mirrorless</h3>
-                        <p class="product-description">Kamera mirrorless untuk fotografer pemula hingga profesional. Hasil foto tajam dengan fitur lengkap.</p>
-                        <div class="product-price">Rp 5.499.000</div>
-                        <a href="#" class="product-button">Beli Sekarang</a>
+                    <div class="post-image">
+                        💄
+                    </div>
+                    <div class="post-content">
+                        <div class="post-title">Makeup Set Premium</div>
+                        <div class="post-description">Set makeup lengkap untuk tampilan sempurna. Tahan lama dan aman untuk semua jenis kulit.</div>
+                        <div class="post-price">Rp 599.000</div>
+                        <div class="post-actions">
+                            <div class="action-buttons">
+                                <button class="action-btn">❤️</button>
+                                <button class="action-btn">💬</button>
+                                <button class="action-btn">📤</button>
+                            </div>
+                            <a href="https://tokopedia.link/LINK_AFILIASI_3" class="shop-btn" target="_blank">BELI</a>
+                        </div>
                     </div>
                 </div>
 
-                <div class="product-card">
-                    <div class="product-image">
-                        🏠 Smart Home
+                <!-- Post 4 -->
+                <div class="insta-post" onclick="window.open('https://shope.ee/LINK_AFILIASI_4', '_blank')">
+                    <div class="post-header">
+                        <div class="profile-pic">NS</div>
+                        <div class="post-info">
+                            <h4>namakamu_shop</h4>
+                            <span>Jakarta • Sponsored</span>
+                        </div>
                     </div>
-                    <div class="product-content">
-                        <h3 class="product-title">Paket Smart Home</h3>
-                        <p class="product-description">Paket lengkap smart home dengan lampu pintar, speaker, dan sensor yang bisa dikontrol via smartphone.</p>
-                        <div class="product-price">Rp 3.299.000</div>
-                        <a href="#" class="product-button">Beli Sekarang</a>
+                    <div class="post-image">
+                        ⌚
+                    </div>
+                    <div class="post-content">
+                        <div class="post-title">Smartwatch Fitness</div>
+                        <div class="post-description">Smartwatch dengan fitur kesehatan lengkap, GPS, dan notifikasi. Perfect untuk gaya hidup aktif!</div>
+                        <div class="post-price">Rp 1.299.000</div>
+                        <div class="post-actions">
+                            <div class="action-buttons">
+                                <button class="action-btn">❤️</button>
+                                <button class="action-btn">💬</button>
+                                <button class="action-btn">📤</button>
+                            </div>
+                            <a href="https://shope.ee/LINK_AFILIASI_4" class="shop-btn" target="_blank">BELI</a>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Post 5 -->
+                <div class="insta-post" onclick="window.open('https://tokopedia.link/LINK_AFILIASI_5', '_blank')">
+                    <div class="post-header">
+                        <div class="profile-pic">NS</div>
+                        <div class="post-info">
+                            <h4>namakamu_shop</h4>
+                            <span>Jakarta • Sponsored</span>
+                        </div>
+                    </div>
+                    <div class="post-image">
+                        🎧
+                    </div>
+                    <div class="post-content">
+                        <div class="post-title">Wireless Earbuds</div>
+                        <div class="post-description">Earbuds wireless dengan kualitas suara jernih dan noise cancelling. Cocok untuk musik dan call.</div>
+                        <div class="post-price">Rp 799.000</div>
+                        <div class="post-actions">
+                            <div class="action-buttons">
+                                <button class="action-btn">❤️</button>
+                                <button class="action-btn">💬</button>
+                                <button class="action-btn">📤</button>
+                            </div>
+                            <a href="https://tokopedia.link/LINK_AFILIASI_5" class="shop-btn" target="_blank">BELI</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Post 6 -->
+                <div class="insta-post" onclick="window.open('https://shope.ee/LINK_AFILIASI_6', '_blank')">
+                    <div class="post-header">
+                        <div class="profile-pic">NS</div>
+                        <div class="post-info">
+                            <h4>namakamu_shop</h4>
+                            <span>Jakarta • Sponsored</span>
+                        </div>
+                    </div>
+                    <div class="post-image">
+                        👜
+                    </div>
+                    <div class="post-content">
+                        <div class="post-title">Tas Wanita Premium</div>
+                        <div class="post-description">Tas wanita dengan desain elegan dan bahan berkualitas. Cocok untuk acara formal maupun kasual.</div>
+                        <div class="post-price">Rp 1.199.000</div>
+                        <div class="post-actions">
+                            <div class="action-buttons">
+                                <button class="action-btn">❤️</button>
+                                <button class="action-btn">💬</button>
+                                <button class="action-btn">📤</button>
+                            </div>
+                            <a href="https://shope.ee/LINK_AFILIASI_6" class="shop-btn" target="_blank">BELI</a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <section class="features">
+    <section class="instagram-cta" id="instagram">
         <div class="container">
-            <h2>Kenapa Pilih Kami?</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">✅</div>
-                    <h3>Produk Terpercaya</h3>
-                    <p>Semua produk telah melewati seleksi ketat dan diuji langsung oleh tim kami</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💰</div>
-                    <h3>Harga Terjangkau</h3>
-                    <p>Kami berkomitmen memberikan harga terbaik dengan kualitas yang tidak diragukan</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🚚</div>
-                    <h3>Pengiriman Cepat</h3>
-                    <p>Pengiriman ke seluruh Indonesia dengan jaminan barang sampai dengan aman</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔒</div>
-                    <h3>Garansi Resmi</h3>
-                    <p>Semua produk dilengkapi dengan garansi resmi dan after-sales service terbaik</p>
-                </div>
-            </div>
+            <h3>Follow Instagram Kami untuk Update Produk Terbaru!</h3>
+            <p>Dapatkan notifikasi produk terbaru, review, dan promo khusus di Instagram</p>
+            <a href="https://instagram.com/namakamu_shop" class="follow-btn" target="_blank">📷 Follow @namakamu_shop</a>
         </div>
     </section>
 
@@ -408,24 +573,23 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>Tentang AfiliasiKu</h3>
-                    <p>Platform terpercaya untuk menemukan produk-produk berkualitas dengan harga terjangkau.</p>
+                    <h3>InstagramShop</h3>
+                    <p>Platform belanja terpercaya dengan produk-produk pilihan yang telah direview di Instagram kami.</p>
                 </div>
                 <div class="footer-section">
-                    <h3>Kategori</h3>
-                    <a href="#">Elektronik</a>
-                    <a href="#">Fashion</a>
-                    <a href="#">Rumah & Taman</a>
-                    <a href="#">Olahraga</a>
+                    <h3>Follow Us</h3>
+                    <a href="https://instagram.com/namakamu_shop" target="_blank">📷 Instagram</a>
+                    <a href="https://tiktok.com/@namakamu_shop" target="_blank">🎵 TikTok</a>
+                    <a href="https://youtube.com/@namakamu_shop" target="_blank">📹 YouTube</a>
                 </div>
                 <div class="footer-section">
                     <h3>Hubungi Kami</h3>
-                    <a href="#">📧 info@afiliasku.com</a>
-                    <a href="#">📱 +62 812-3456-7890</a>
+                    <a href="mailto:info@namakamu.com">📧 info@namakamu.com</a>
+                    <a href="https://wa.me/6281234567890" target="_blank">📱 WhatsApp</a>
                     <a href="#">📍 Jakarta, Indonesia</a>
                 </div>
             </div>
-            <p>&copy; 2025 AfiliasiKu. Hak cipta dilindungi.</p>
+            <p>&copy; 2025 InstagramShop. All rights reserved.</p>
         </div>
     </footer>
 
@@ -445,25 +609,32 @@
 
         // Animasi saat scroll
         window.addEventListener('scroll', function() {
-            const cards = document.querySelectorAll('.product-card, .feature-card');
-            cards.forEach(card => {
-                const cardTop = card.getBoundingClientRect().top;
+            const posts = document.querySelectorAll('.insta-post');
+            posts.forEach(post => {
+                const postTop = post.getBoundingClientRect().top;
                 const windowHeight = window.innerHeight;
                 
-                if (cardTop < windowHeight - 100) {
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
+                if (postTop < windowHeight - 100) {
+                    post.style.opacity = '1';
+                    post.style.transform = 'translateY(0)';
                 }
             });
         });
 
         // Set initial state untuk animasi
         document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.product-card, .feature-card');
-            cards.forEach(card => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(30px)';
-                card.style.transition = 'all 0.6s ease';
+            const posts = document.querySelectorAll('.insta-post');
+            posts.forEach(post => {
+                post.style.opacity = '0';
+                post.style.transform = 'translateY(30px)';
+                post.style.transition = 'all 0.6s ease';
+            });
+        });
+
+        // Hapus event listener default untuk link afiliasi
+        document.querySelectorAll('.shop-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
             });
         });
     </script>
