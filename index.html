@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produk yang anda sukai</title>
+    <title>Produk Pilihan Terbaik | Rekomendasi Terpercaya</title>
     <style>
         * {
             margin: 0;
@@ -15,7 +15,7 @@
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
         }
 
@@ -25,13 +25,16 @@
             padding: 0 20px;
         }
 
+        /* Header */
         header {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             padding: 1rem 0;
-            position: sticky;
+            position: fixed;
+            width: 100%;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
         }
 
         .header-content {
@@ -43,278 +46,250 @@
         .logo {
             font-size: 1.8rem;
             font-weight: bold;
-            color: white;
+            color: #764ba2;
             text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .instagram-icon {
-            background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-size: 2rem;
         }
 
         nav ul {
-            display: flex;
             list-style: none;
+            display: flex;
             gap: 2rem;
         }
 
         nav a {
-            color: white;
             text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            transition: all 0.3s ease;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
         }
 
         nav a:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
+            color: #764ba2;
         }
 
+        /* Hero Section */
         .hero {
+            padding: 120px 0 80px;
             text-align: center;
-            padding: 3rem 0;
             color: white;
         }
 
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease-out;
         }
 
         .hero p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
             opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.2s both;
         }
 
-        .instagram-handle {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-            backdrop-filter: blur(10px);
-        }
-
-        .products {
+        /* Products Section */
+        .products-section {
+            padding: 80px 0;
             background: white;
-            padding: 3rem 0;
-            margin-top: 1rem;
+            margin-top: -40px;
+            border-radius: 40px 40px 0 0;
+            position: relative;
         }
 
-        .products h2 {
+        .section-title {
             text-align: center;
-            margin-bottom: 2rem;
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             color: #333;
-        }
-
-        .instagram-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
             margin-bottom: 3rem;
+            position: relative;
         }
 
-        .insta-post {
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .product-card {
             background: white;
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
-            cursor: pointer;
+            position: relative;
+            border: 2px solid transparent;
         }
 
-        .insta-post:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-color: #667eea;
         }
 
-        .post-header {
-            padding: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            border-bottom: 1px solid #eee;
-        }
-
-        .profile-pic {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-        }
-
-        .post-info h4 {
-            font-size: 0.9rem;
-            color: #333;
-        }
-
-        .post-info span {
-            font-size: 0.8rem;
-            color: #666;
-        }
-
-        .post-image {
+        .product-image {
             width: 100%;
-            height: 280px;
-            background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
+            height: 250px;
+            background: linear-gradient(45deg, #f0f2f5, #e8ecf0);
             position: relative;
             overflow: hidden;
         }
 
-        .post-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.3);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .insta-post:hover .post-image::before {
-            opacity: 1;
-        }
-
-        .post-image::after {
-            content: '🛒';
+        .product-image::before {
+            content: '📱';
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 2rem;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            font-size: 4rem;
+            opacity: 0.3;
         }
 
-        .insta-post:hover .post-image::after {
-            opacity: 1;
+        .product-card:nth-child(2) .product-image::before { content: '💻'; }
+        .product-card:nth-child(3) .product-image::before { content: '🎧'; }
+        .product-card:nth-child(4) .product-image::before { content: '⌚'; }
+        .product-card:nth-child(5) .product-image::before { content: '📷'; }
+        .product-card:nth-child(6) .product-image::before { content: '🎮'; }
+
+        .product-content {
+            padding: 2rem;
         }
 
-        .post-content {
-            padding: 1rem;
-        }
-
-        .post-title {
-            font-size: 1.1rem;
+        .product-title {
+            font-size: 1.4rem;
             font-weight: bold;
-            margin-bottom: 0.5rem;
             color: #333;
+            margin-bottom: 0.5rem;
         }
 
-        .post-description {
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stars {
+            color: #ffa500;
+            font-size: 1.1rem;
+        }
+
+        .rating-text {
             color: #666;
             font-size: 0.9rem;
-            margin-bottom: 1rem;
-            line-height: 1.4;
         }
 
-        .post-price {
-            font-size: 1.3rem;
+        .product-price {
+            font-size: 1.5rem;
             font-weight: bold;
-            color: #e1306c;
+            color: #e74c3c;
             margin-bottom: 1rem;
         }
 
-        .post-actions {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 0.5rem;
-            border-top: 1px solid #eee;
+        .product-description {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
         }
 
-        .action-buttons {
-            display: flex;
-            gap: 1rem;
+        .product-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
         }
 
-        .action-btn {
-            background: none;
-            border: none;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: transform 0.2s ease;
+        .product-features li {
+            padding: 0.3rem 0;
+            color: #555;
+            position: relative;
+            padding-left: 1.5rem;
         }
 
-        .action-btn:hover {
-            transform: scale(1.2);
-        }
-
-        .shop-btn {
-            background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045);
-            color: white;
-            padding: 0.6rem 1.2rem;
-            border: none;
-            border-radius: 25px;
+        .product-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #27ae60;
             font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
         }
 
-        .shop-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(131, 58, 180, 0.3);
-        }
-
-        .instagram-cta {
-            text-align: center;
-            padding: 3rem 0;
-            background: #f8f9fa;
-        }
-
-        .instagram-cta h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: #333;
-        }
-
-        .follow-btn {
-            display: inline-block;
-            background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045);
+        .cta-button {
+            width: 100%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
             color: white;
+            border: none;
             padding: 1rem 2rem;
-            text-decoration: none;
-            border-radius: 50px;
+            font-size: 1.1rem;
             font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(131, 58, 180, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .follow-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(131, 58, 180, 0.4);
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
         }
 
-        footer {
-            background: #333;
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(118, 75, 162, 0.4);
+        }
+
+        /* Badge */
+        .badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #e74c3c;
             color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        .badge.bestseller {
+            background: #f39c12;
+        }
+
+        .badge.new {
+            background: #27ae60;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem 0;
             text-align: center;
-            padding: 2rem 0;
         }
 
         .footer-content {
@@ -326,38 +301,74 @@
 
         .footer-section h3 {
             margin-bottom: 1rem;
-            color: #e1306c;
+            color: #ecf0f1;
         }
 
-        .footer-section a {
-            color: #ccc;
+        .footer-section p, .footer-section a {
+            color: #bdc3c7;
             text-decoration: none;
-            display: block;
-            margin-bottom: 0.5rem;
+            line-height: 1.6;
         }
 
         .footer-section a:hover {
-            color: #e1306c;
+            color: #3498db;
         }
 
+        .footer-bottom {
+            border-top: 1px solid #34495e;
+            padding-top: 2rem;
+            margin-top: 2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2rem;
             }
             
-            .header-content {
-                flex-direction: column;
-                gap: 1rem;
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
             
             nav ul {
                 flex-direction: column;
                 gap: 1rem;
             }
+        }
 
-            .instagram-grid {
-                grid-template-columns: 1fr;
-            }
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, #5a67d8, #6b46c1);
         }
     </style>
 </head>
@@ -365,15 +376,13 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <a href="#" class="logo">
-                    <span class="instagram-icon">📷</span>
-                    InstagramShop
-                </a>
+                <a href="#" class="logo">ProdukTerbaik.id</a>
                 <nav>
                     <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#products">Products</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#products">Produk</a></li>
+                        <li><a href="#reviews">Review</a></li>
+                        <li><a href="#contact">Kontak</a></li>
                     </ul>
                 </nav>
             </div>
@@ -382,189 +391,140 @@
 
     <section class="hero" id="home">
         <div class="container">
-            <h1>Produk Pilihan yang mungkin anda sukai</h1>
-            <p>Temukan produk-produk terbaik yang telah direview dan direkomendasikan di sini</p>
-            <div class="instagram-handle">@kontenku</div>
-            <a href="#products" class="follow-btn">Lihat Produk Terbaru</a>
+            <h1>Produk Pilihan Terbaik</h1>
+            <p>Temukan produk berkualitas tinggi dengan harga terbaik, direkomendasikan khusus untuk Anda</p>
         </div>
     </section>
 
-    <section class="products" id="products">
+    <section class="products-section" id="products">
         <div class="container">
-            <h2>📱 Lihat Produk</h2>
-            <div class="instagram-grid">
-                
-                <!-- Post 1 -->
-                <div class="insta-post" onclick="window.open('https://shope.ee/LINK_AFILIASI_1', '_blank')">
-                    <div class="post-header">
-                        <div class="profile-pic">NS</div>
-                        <div class="post-info">
-                            <h4>Kontenku</h4>
-                            <span>Jakarta • Sponsored</span>
+            <h2 class="section-title">Rekomendasi Produk Terbaik</h2>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="badge bestseller">Terlaris</div>
+                    <div class="product-image"></div>
+                    <div class="product-content">
+                        <h3 class="product-title">Smartphone Gaming Pro</h3>
+                        <div class="product-rating">
+                            <div class="stars">★★★★★</div>
+                            <span class="rating-text">(4.8/5 - 1,245 review)</span>
                         </div>
-                    </div>
-                    <div class="post-image">
-                        📱
-                    </div>
-                    <div class="post-content">
-                        <div class="post-title">iPhone 15 Pro Max</div>
-                        <div class="post-description">Smartphone terbaru dengan kamera profesional dan performa tinggi. Perfect untuk content creator!</div>
-                        <div class="post-price">Rp 18.999.000</div>
-                        <div class="post-actions">
-                            <div class="action-buttons">
-                                <button class="action-btn">❤️</button>
-                                <button class="action-btn">💬</button>
-                                <button class="action-btn">📤</button>
-                            </div>
-                            <a href="https://shope.ee/LINK_AFILIASI_1" class="shop-btn" target="_blank">BELI</a>
-                        </div>
+                        <div class="product-price">Rp 3.999.000</div>
+                        <p class="product-description">Smartphone dengan performa gaming terdepan, dilengkapi prosesor flagship dan sistem pendingin canggih.</p>
+                        <ul class="product-features">
+                            <li>RAM 12GB + Storage 256GB</li>
+                            <li>Kamera 108MP dengan AI</li>
+                            <li>Baterai 5000mAh Fast Charging</li>
+                            <li>Layar AMOLED 120Hz</li>
+                        </ul>
+                        <button class="cta-button">Beli Sekarang</button>
                     </div>
                 </div>
 
-                <!-- Post 2 -->
-                <div class="insta-post" onclick="window.open('https://shope.ee/LINK_AFILIASI_2', '_blank')">
-                    <div class="post-header">
-                        <div class="profile-pic">NS</div>
-                        <div class="post-info">
-                            <h4>namakamu_shop</h4>
-                            <span>Jakarta • Sponsored</span>
+                <div class="product-card">
+                    <div class="badge new">Baru</div>
+                    <div class="product-image"></div>
+                    <div class="product-content">
+                        <h3 class="product-title">Laptop Ultrabook Premium</h3>
+                        <div class="product-rating">
+                            <div class="stars">★★★★★</div>
+                            <span class="rating-text">(4.7/5 - 892 review)</span>
                         </div>
-                    </div>
-                    <div class="post-image">
-                        👟
-                    </div>
-                    <div class="post-content">
-                        <div class="post-title">Sneakers Premium</div>
-                        <div class="post-description">Sepatu sneakers kualitas premium, nyaman dipakai sehari-hari. Cocok untuk gaya kasual dan olahraga.</div>
-                        <div class="post-price">Rp 899.000</div>
-                        <div class="post-actions">
-                            <div class="action-buttons">
-                                <button class="action-btn">❤️</button>
-                                <button class="action-btn">💬</button>
-                                <button class="action-btn">📤</button>
-                            </div>
-                            <a href="https://shope.ee/LINK_AFILIASI_2" class="shop-btn" target="_blank">BELI</a>
-                        </div>
+                        <div class="product-price">Rp 12.999.000</div>
+                        <p class="product-description">Laptop ultra-tipis dengan performa tinggi, cocok untuk profesional dan content creator.</p>
+                        <ul class="product-features">
+                            <li>Intel Core i7 Gen 12</li>
+                            <li>RAM 16GB DDR5</li>
+                            <li>SSD 1TB NVMe</li>
+                            <li>Layar 14" 4K OLED</li>
+                        </ul>
+                        <button class="cta-button">Beli Sekarang</button>
                     </div>
                 </div>
 
-                <!-- Post 3 -->
-                <div class="insta-post" onclick="window.open('https://tokopedia.link/LINK_AFILIASI_3', '_blank')">
-                    <div class="post-header">
-                        <div class="profile-pic">NS</div>
-                        <div class="post-info">
-                            <h4>namakamu_shop</h4>
-                            <span>Jakarta • Sponsored</span>
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-content">
+                        <h3 class="product-title">Headphone Wireless Premium</h3>
+                        <div class="product-rating">
+                            <div class="stars">★★★★☆</div>
+                            <span class="rating-text">(4.6/5 - 2,103 review)</span>
                         </div>
-                    </div>
-                    <div class="post-image">
-                        💄
-                    </div>
-                    <div class="post-content">
-                        <div class="post-title">Makeup Set Premium</div>
-                        <div class="post-description">Set makeup lengkap untuk tampilan sempurna. Tahan lama dan aman untuk semua jenis kulit.</div>
-                        <div class="post-price">Rp 599.000</div>
-                        <div class="post-actions">
-                            <div class="action-buttons">
-                                <button class="action-btn">❤️</button>
-                                <button class="action-btn">💬</button>
-                                <button class="action-btn">📤</button>
-                            </div>
-                            <a href="https://tokopedia.link/LINK_AFILIASI_3" class="shop-btn" target="_blank">BELI</a>
-                        </div>
+                        <div class="product-price">Rp 899.000</div>
+                        <p class="product-description">Headphone nirkabel dengan Active Noise Cancellation dan kualitas suara studio.</p>
+                        <ul class="product-features">
+                            <li>Active Noise Cancellation</li>
+                            <li>Baterai 30 jam</li>
+                            <li>Hi-Res Audio</li>
+                            <li>Bluetooth 5.3</li>
+                        </ul>
+                        <button class="cta-button">Beli Sekarang</button>
                     </div>
                 </div>
 
-                <!-- Post 4 -->
-                <div class="insta-post" onclick="window.open('https://shope.ee/LINK_AFILIASI_4', '_blank')">
-                    <div class="post-header">
-                        <div class="profile-pic">NS</div>
-                        <div class="post-info">
-                            <h4>namakamu_shop</h4>
-                            <span>Jakarta • Sponsored</span>
+                <div class="product-card">
+                    <div class="badge">Promo</div>
+                    <div class="product-image"></div>
+                    <div class="product-content">
+                        <h3 class="product-title">Smartwatch Fitness Pro</h3>
+                        <div class="product-rating">
+                            <div class="stars">★★★★★</div>
+                            <span class="rating-text">(4.5/5 - 1,567 review)</span>
                         </div>
-                    </div>
-                    <div class="post-image">
-                        ⌚
-                    </div>
-                    <div class="post-content">
-                        <div class="post-title">Smartwatch Fitness</div>
-                        <div class="post-description">Smartwatch dengan fitur kesehatan lengkap, GPS, dan notifikasi. Perfect untuk gaya hidup aktif!</div>
-                        <div class="post-price">Rp 1.299.000</div>
-                        <div class="post-actions">
-                            <div class="action-buttons">
-                                <button class="action-btn">❤️</button>
-                                <button class="action-btn">💬</button>
-                                <button class="action-btn">📤</button>
-                            </div>
-                            <a href="https://shope.ee/LINK_AFILIASI_4" class="shop-btn" target="_blank">BELI</a>
-                        </div>
+                        <div class="product-price">Rp 1.299.000</div>
+                        <p class="product-description">Smartwatch dengan fitur kesehatan lengkap dan desain premium untuk gaya hidup aktif.</p>
+                        <ul class="product-features">
+                            <li>Monitor Detak Jantung 24/7</li>
+                            <li>GPS Built-in</li>
+                            <li>Tahan Air 50m</li>
+                            <li>Baterai 7 hari</li>
+                        </ul>
+                        <button class="cta-button">Beli Sekarang</button>
                     </div>
                 </div>
 
-                <!-- Post 5 -->
-                <div class="insta-post" onclick="window.open('https://tokopedia.link/LINK_AFILIASI_5', '_blank')">
-                    <div class="post-header">
-                        <div class="profile-pic">NS</div>
-                        <div class="post-info">
-                            <h4>namakamu_shop</h4>
-                            <span>Jakarta • Sponsored</span>
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-content">
+                        <h3 class="product-title">Kamera Mirrorless 4K</h3>
+                        <div class="product-rating">
+                            <div class="stars">★★★★★</div>
+                            <span class="rating-text">(4.9/5 - 743 review)</span>
                         </div>
-                    </div>
-                    <div class="post-image">
-                        🎧
-                    </div>
-                    <div class="post-content">
-                        <div class="post-title">Wireless Earbuds</div>
-                        <div class="post-description">Earbuds wireless dengan kualitas suara jernih dan noise cancelling. Cocok untuk musik dan call.</div>
-                        <div class="post-price">Rp 799.000</div>
-                        <div class="post-actions">
-                            <div class="action-buttons">
-                                <button class="action-btn">❤️</button>
-                                <button class="action-btn">💬</button>
-                                <button class="action-btn">📤</button>
-                            </div>
-                            <a href="https://tokopedia.link/LINK_AFILIASI_5" class="shop-btn" target="_blank">BELI</a>
-                        </div>
+                        <div class="product-price">Rp 8.999.000</div>
+                        <p class="product-description">Kamera mirrorless dengan sensor APS-C untuk fotografi dan videografi profesional.</p>
+                        <ul class="product-features">
+                            <li>Sensor APS-C 24.2MP</li>
+                            <li>Video 4K 60fps</li>
+                            <li>Stabilisasi 5-axis</li>
+                            <li>Wi-Fi & Bluetooth</li>
+                        </ul>
+                        <button class="cta-button">Beli Sekarang</button>
                     </div>
                 </div>
 
-                <!-- Post 6 -->
-                <div class="insta-post" onclick="window.open('https://shope.ee/LINK_AFILIASI_6', '_blank')">
-                    <div class="post-header">
-                        <div class="profile-pic">NS</div>
-                        <div class="post-info">
-                            <h4>namakamu_shop</h4>
-                            <span>Jakarta • Sponsored</span>
+                <div class="product-card">
+                    <div class="badge bestseller">Terlaris</div>
+                    <div class="product-image"></div>
+                    <div class="product-content">
+                        <h3 class="product-title">Gaming Console Next-Gen</h3>
+                        <div class="product-rating">
+                            <div class="stars">★★★★★</div>
+                            <span class="rating-text">(4.8/5 - 3,421 review)</span>
                         </div>
-                    </div>
-                    <div class="post-image">
-                        👜
-                    </div>
-                    <div class="post-content">
-                        <div class="post-title">Tas Wanita Premium</div>
-                        <div class="post-description">Tas wanita dengan desain elegan dan bahan berkualitas. Cocok untuk acara formal maupun kasual.</div>
-                        <div class="post-price">Rp 1.199.000</div>
-                        <div class="post-actions">
-                            <div class="action-buttons">
-                                <button class="action-btn">❤️</button>
-                                <button class="action-btn">💬</button>
-                                <button class="action-btn">📤</button>
-                            </div>
-                            <a href="https://shope.ee/LINK_AFILIASI_6" class="shop-btn" target="_blank">BELI</a>
-                        </div>
+                        <div class="product-price">Rp 7.499.000</div>
+                        <p class="product-description">Konsol gaming generasi terbaru dengan grafis 4K dan loading super cepat.</p>
+                        <ul class="product-features">
+                            <li>Grafis 4K 120fps</li>
+                            <li>SSD Ultra High Speed</li>
+                            <li>Ray Tracing</li>
+                            <li>Backward Compatibility</li>
+                        </ul>
+                        <button class="cta-button">Beli Sekarang</button>
                     </div>
                 </div>
-
             </div>
-        </div>
-    </section>
-
-    <section class="instagram-cta" id="instagram">
-        <div class="container">
-            <h3>Follow Instagram Kami untuk Update Produk Terbaru!</h3>
-            <p>Dapatkan notifikasi produk terbaru, review, dan promo khusus di Instagram</p>
-            <a href="https://instagram.com/namakamu_shop" class="follow-btn" target="_blank">📷 Follow @namakamu_shop</a>
         </div>
     </section>
 
@@ -572,23 +532,26 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>InstagramShop</h3>
-                    <p>Platform belanja terpercaya dengan produk-produk pilihan yang telah direview di Instagram kami.</p>
+                    <h3>Tentang Kami</h3>
+                    <p>ProdukTerbaik.id adalah platform rekomendasi produk terpercaya yang membantu Anda menemukan produk berkualitas dengan harga terbaik.</p>
                 </div>
                 <div class="footer-section">
-                    <h3>Follow Us</h3>
-                    <a href="https://instagram.com/namakamu_shop" target="_blank">📷 Instagram</a>
-                    <a href="https://tiktok.com/@namakamu_shop" target="_blank">🎵 TikTok</a>
-                    <a href="https://youtube.com/@namakamu_shop" target="_blank">📹 YouTube</a>
+                    <h3>Kategori</h3>
+                    <p><a href="#">Elektronik</a></p>
+                    <p><a href="#">Gadget</a></p>
+                    <p><a href="#">Fashion</a></p>
+                    <p><a href="#">Rumah & Taman</a></p>
                 </div>
                 <div class="footer-section">
                     <h3>Hubungi Kami</h3>
-                    <a href="mailto:info@namakamu.com">📧 info@namakamu.com</a>
-                    <a href="https://wa.me/6281234567890" target="_blank">📱 WhatsApp</a>
-                    <a href="#">📍 Jakarta, Indonesia</a>
+                    <p>Email: info@produkterbaik.id</p>
+                    <p>Telepon: (021) 123-4567</p>
+                    <p>WhatsApp: +62 812-3456-7890</p>
                 </div>
             </div>
-            <p>&copy; 2025 InstagramShop. All rights reserved.</p>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ProdukTerbaik.id. Semua hak cipta dilindungi.</p>
+            </div>
         </div>
     </footer>
 
@@ -600,40 +563,53 @@
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
                     target.scrollIntoView({
-                        behavior: 'smooth'
+                        behavior: 'smooth',
+                        block: 'start'
                     });
                 }
             });
         });
 
-        // Animasi saat scroll
-        window.addEventListener('scroll', function() {
-            const posts = document.querySelectorAll('.insta-post');
-            posts.forEach(post => {
-                const postTop = post.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                
-                if (postTop < windowHeight - 100) {
-                    post.style.opacity = '1';
-                    post.style.transform = 'translateY(0)';
+        // Animasi card saat scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
                 }
             });
+        }, observerOptions);
+
+        document.querySelectorAll('.product-card').forEach(card => {
+            observer.observe(card);
         });
 
-        // Set initial state untuk animasi
-        document.addEventListener('DOMContentLoaded', function() {
-            const posts = document.querySelectorAll('.insta-post');
-            posts.forEach(post => {
-                post.style.opacity = '0';
-                post.style.transform = 'translateY(30px)';
-                post.style.transition = 'all 0.6s ease';
-            });
+        // Efek parallax ringan pada hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            hero.style.transform = `translateY(${scrolled * 0.5}px)`;
         });
 
-        // Hapus event listener default untuk link afiliasi
-        document.querySelectorAll('.shop-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation();
+        // Simulasi klik tombol CTA
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const productTitle = this.closest('.product-card').querySelector('.product-title').textContent;
+                
+                // Efek visual
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 150);
+                
+                // Simulasi redirect atau action
+                setTimeout(() => {
+                    alert(`Mengarahkan ke halaman pembelian untuk: ${productTitle}`);
+                }, 200);
             });
         });
     </script>
