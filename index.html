@@ -1,4 +1,20 @@
-<!DOCTYPE html>
+            .popular-searches {
+                margin-top: 1.5rem;
+            }
+
+            .popular-tags {
+                gap: 0.3rem;
+            }
+
+            .search-box {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .search-btn {
+                border-radius: 25px;
+                margin-top: 10px;
+            }<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -67,6 +83,205 @@
             color: #764ba2;
         }
 
+        /* Search Section */
+        .search-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem 0;
+            margin-top: 80px;
+        }
+
+        .search-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-box {
+            display: flex;
+            background: white;
+            border-radius: 50px;
+            padding: 5px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .search-box:focus-within {
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .search-input {
+            flex: 1;
+            border: none;
+            padding: 1rem 1.5rem;
+            font-size: 1.1rem;
+            border-radius: 45px;
+            outline: none;
+            background: transparent;
+        }
+
+        .search-input::placeholder {
+            color: #999;
+        }
+
+        .search-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 45px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(118, 75, 162, 0.4);
+        }
+
+        .search-suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-top: 10px;
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+        }
+
+        .search-suggestions.show {
+            display: block;
+        }
+
+        .suggestion-item {
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .suggestion-item:hover {
+            background: #f8f9fa;
+        }
+
+        .suggestion-item:last-child {
+            border-bottom: none;
+        }
+
+        .suggestion-icon {
+            font-size: 1.2rem;
+            opacity: 0.7;
+        }
+
+        .suggestion-text {
+            flex: 1;
+        }
+
+        .suggestion-category {
+            font-size: 0.8rem;
+            color: #999;
+            background: #f0f0f0;
+            padding: 0.2rem 0.5rem;
+            border-radius: 10px;
+        }
+
+        /* Popular Searches */
+        .popular-searches {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .popular-searches h4 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .popular-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .popular-tag {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .popular-tag:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Search Results Info */
+        .search-results-info {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .search-results-info.show {
+            display: block;
+        }
+
+        .search-results-text {
+            color: #667eea;
+            font-weight: 500;
+        }
+
+        .clear-search {
+            background: none;
+            border: none;
+            color: #667eea;
+            cursor: pointer;
+            text-decoration: underline;
+            margin-left: 1rem;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+        }
+
+        .no-results h3 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .no-results p {
+            margin-bottom: 2rem;
+        }
+
+        .search-suggestions-text {
+            color: #667eea;
+            font-weight: 500;
+        }
+
         /* Hero Section */
         .hero {
             padding: 120px 0 80px;
@@ -115,6 +330,124 @@
             height: 4px;
             background: linear-gradient(45deg, #667eea, #764ba2);
             border-radius: 2px;
+        }
+
+        /* Filter/Sort Section */
+        .filter-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 2rem 0;
+            padding: 1rem;
+            background: rgba(102, 126, 234, 0.05);
+            border-radius: 15px;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .sort-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .sort-btn {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: capitalize;
+        }
+
+        .sort-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .sort-btn.active {
+            background: #667eea;
+            color: white;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .filter-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .price-filter {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .price-filter select {
+            padding: 0.5rem;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            background: white;
+            color: #667eea;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .results-info {
+            color: #666;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 2rem 0;
+        }
+
+        .pagination-btn {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .pagination-btn:hover:not(.disabled) {
+            background: #667eea;
+            color: white;
+        }
+
+        .pagination-btn.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .pagination-info {
+            color: #666;
+            font-size: 0.9rem;
+            margin: 0 1rem;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.5s ease-out forwards;
         }
 
         .products-grid {
@@ -351,6 +684,19 @@
                 flex-direction: column;
                 gap: 1rem;
             }
+
+            .filter-section {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .sort-buttons {
+                justify-content: center;
+            }
+
+            .filter-controls {
+                justify-content: center;
+            }
         }
 
         /* Scrollbar */
@@ -386,8 +732,44 @@
                     </ul>
                 </nav>
             </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="pagination-btn" id="prev-btn">‹</button>
+                <span class="pagination-info" id="pagination-info">1/2</span>
+                <button class="pagination-btn" id="next-btn">›</button>
+            </div>
         </div>
     </header>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" class="search-input" id="search-input" placeholder="Cari produk terbaik untuk Anda...">
+                    <button class="search-btn" id="search-btn">
+                        <span>🔍</span>
+                        Cari
+                    </button>
+                </div>
+                
+                <div class="search-suggestions" id="search-suggestions"></div>
+                
+                <div class="popular-searches">
+                    <h4>Pencarian Populer:</h4>
+                    <div class="popular-tags">
+                        <a href="#" class="popular-tag" data-search="smartphone">Smartphone</a>
+                        <a href="#" class="popular-tag" data-search="laptop">Laptop</a>
+                        <a href="#" class="popular-tag" data-search="headphone">Headphone</a>
+                        <a href="#" class="popular-tag" data-search="gaming">Gaming</a>
+                        <a href="#" class="popular-tag" data-search="kamera">Kamera</a>
+                        <a href="#" class="popular-tag" data-search="smartwatch">Smartwatch</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section class="hero" id="home">
         <div class="container">
@@ -400,7 +782,53 @@
         <div class="container">
             <h2 class="section-title">Rekomendasi Produk Terbaik</h2>
             
-            <div class="products-grid">
+            <!-- Search Results Info -->
+            <div class="search-results-info" id="search-results-info">
+                <span class="search-results-text" id="search-results-text"></span>
+                <button class="clear-search" id="clear-search">Bersihkan pencarian</button>
+            </div>
+            
+            <!-- Filter/Sort Section -->
+            <div class="filter-section">
+                <div class="sort-buttons">
+                    <button class="sort-btn active" data-sort="default">Urutkan</button>
+                    <button class="sort-btn" data-sort="popular">Populer</button>
+                    <button class="sort-btn" data-sort="newest">Terbaru</button>
+                    <button class="sort-btn" data-sort="oldest">Terlaris</button>
+                    <button class="sort-btn" data-sort="price-low">Harga ↑</button>
+                    <button class="sort-btn" data-sort="price-high">Harga ↓</button>
+                </div>
+                
+                <div class="filter-controls">
+                    <div class="price-filter">
+                        <label for="price-range">Harga:</label>
+                        <select id="price-range">
+                            <option value="all">Semua Harga</option>
+                            <option value="0-1000000">< Rp 1 Juta</option>
+                            <option value="1000000-5000000">Rp 1-5 Juta</option>
+                            <option value="5000000-10000000">Rp 5-10 Juta</option>
+                            <option value="10000000-99999999">> Rp 10 Juta</option>
+                        </select>
+                    </div>
+                    
+                    <div class="results-info">
+                        <span id="results-count">Menampilkan 6 dari 6 produk</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="products-grid" id="products-grid">
+                <!-- Products will be rendered here -->
+            </div>
+
+            <!-- No Results Message -->
+            <div class="no-results" id="no-results" style="display: none;">
+                <h3>Produk tidak ditemukan</h3>
+                <p>Maaf, tidak ada produk yang sesuai dengan pencarian Anda.</p>
+                <div class="search-suggestions-text">
+                    Coba kata kunci: <strong>smartphone, laptop, headphone, gaming, kamera, smartwatch</strong>
+                </div>
+            </div>
                 <div class="product-card">
                     <div class="badge bestseller">Terlaris</div>
                     <div class="product-image"></div>
@@ -556,6 +984,440 @@
     </footer>
 
     <script>
+        // Data produk
+        const products = [
+            {
+                id: 1,
+                title: "Smartphone Gaming Pro",
+                price: 3999000,
+                rating: 4.8,
+                reviews: 1245,
+                badge: "bestseller",
+                badgeText: "Terlaris",
+                description: "Smartphone dengan performa gaming terdepan, dilengkapi prosesor flagship dan sistem pendingin canggih.",
+                features: ["RAM 12GB + Storage 256GB", "Kamera 108MP dengan AI", "Baterai 5000mAh Fast Charging", "Layar AMOLED 120Hz"],
+                icon: "📱",
+                dateAdded: new Date('2024-01-15'),
+                popularity: 95
+            },
+            {
+                id: 2,
+                title: "Laptop Ultrabook Premium",
+                price: 12999000,
+                rating: 4.7,
+                reviews: 892,
+                badge: "new",
+                badgeText: "Baru",
+                description: "Laptop ultra-tipis dengan performa tinggi, cocok untuk profesional dan content creator.",
+                features: ["Intel Core i7 Gen 12", "RAM 16GB DDR5", "SSD 1TB NVMe", "Layar 14\" 4K OLED"],
+                icon: "💻",
+                dateAdded: new Date('2024-07-01'),
+                popularity: 78
+            },
+            {
+                id: 3,
+                title: "Headphone Wireless Premium",
+                price: 899000,
+                rating: 4.6,
+                reviews: 2103,
+                badge: "",
+                badgeText: "",
+                description: "Headphone nirkabel dengan Active Noise Cancellation dan kualitas suara studio.",
+                features: ["Active Noise Cancellation", "Baterai 30 jam", "Hi-Res Audio", "Bluetooth 5.3"],
+                icon: "🎧",
+                dateAdded: new Date('2024-03-10'),
+                popularity: 88
+            },
+            {
+                id: 4,
+                title: "Smartwatch Fitness Pro",
+                price: 1299000,
+                rating: 4.5,
+                reviews: 1567,
+                badge: "promo",
+                badgeText: "Promo",
+                description: "Smartwatch dengan fitur kesehatan lengkap dan desain premium untuk gaya hidup aktif.",
+                features: ["Monitor Detak Jantung 24/7", "GPS Built-in", "Tahan Air 50m", "Baterai 7 hari"],
+                icon: "⌚",
+                dateAdded: new Date('2024-05-20'),
+                popularity: 72
+            },
+            {
+                id: 5,
+                title: "Kamera Mirrorless 4K",
+                price: 8999000,
+                rating: 4.9,
+                reviews: 743,
+                badge: "",
+                badgeText: "",
+                description: "Kamera mirrorless dengan sensor APS-C untuk fotografi dan videografi profesional.",
+                features: ["Sensor APS-C 24.2MP", "Video 4K 60fps", "Stabilisasi 5-axis", "Wi-Fi & Bluetooth"],
+                icon: "📷",
+                dateAdded: new Date('2024-02-28'),
+                popularity: 65
+            },
+            {
+                id: 6,
+                title: "Gaming Console Next-Gen",
+                price: 7499000,
+                rating: 4.8,
+                reviews: 3421,
+                badge: "bestseller",
+                badgeText: "Terlaris",
+                description: "Konsol gaming generasi terbaru dengan grafis 4K dan loading super cepat.",
+                features: ["Grafis 4K 120fps", "SSD Ultra High Speed", "Ray Tracing", "Backward Compatibility"],
+                icon: "🎮",
+                dateAdded: new Date('2024-06-15'),
+                popularity: 92
+            }
+        ];
+
+        let currentProducts = [...products];
+        let currentPage = 1;
+        const productsPerPage = 4;
+        let currentSort = 'default';
+        let currentPriceFilter = 'all';
+        let currentSearchTerm = '';
+
+        // Search suggestions data
+        const searchSuggestions = [
+            { text: 'Smartphone Gaming', category: 'Elektronik', icon: '📱' },
+            { text: 'Laptop Premium', category: 'Komputer', icon: '💻' },
+            { text: 'Headphone Wireless', category: 'Audio', icon: '🎧' },
+            { text: 'Smartwatch Fitness', category: 'Wearable', icon: '⌚' },
+            { text: 'Kamera Mirrorless', category: 'Fotografi', icon: '📷' },
+            { text: 'Gaming Console', category: 'Gaming', icon: '🎮' },
+            { text: 'iPhone', category: 'Smartphone', icon: '📱' },
+            { text: 'MacBook', category: 'Laptop', icon: '💻' },
+            { text: 'AirPods', category: 'Audio', icon: '🎧' },
+            { text: 'Canon', category: 'Kamera', icon: '📷' },
+            { text: 'PlayStation', category: 'Gaming', icon: '🎮' },
+            { text: 'Samsung', category: 'Elektronik', icon: '📱' }
+        ];
+
+        // Search functionality
+        function searchProducts(searchTerm) {
+            currentSearchTerm = searchTerm.toLowerCase();
+            currentPage = 1;
+
+            if (!searchTerm) {
+                currentProducts = [...products];
+                hideSearchResults();
+            } else {
+                currentProducts = products.filter(product => 
+                    product.title.toLowerCase().includes(currentSearchTerm) ||
+                    product.description.toLowerCase().includes(currentSearchTerm) ||
+                    product.features.some(feature => feature.toLowerCase().includes(currentSearchTerm))
+                );
+                showSearchResults(searchTerm);
+            }
+
+            // Re-apply current filters
+            applyCurrentFilters();
+        }
+
+        function showSearchResults(searchTerm) {
+            const searchResultsInfo = document.getElementById('search-results-info');
+            const searchResultsText = document.getElementById('search-results-text');
+            
+            searchResultsInfo.classList.add('show');
+            searchResultsText.textContent = `Hasil pencarian untuk "${searchTerm}"`;
+        }
+
+        function hideSearchResults() {
+            const searchResultsInfo = document.getElementById('search-results-info');
+            searchResultsInfo.classList.remove('show');
+        }
+
+        function clearSearch() {
+            const searchInput = document.getElementById('search-input');
+            searchInput.value = '';
+            searchProducts('');
+        }
+
+        // Search suggestions
+        function showSearchSuggestions(searchTerm) {
+            const suggestionsContainer = document.getElementById('search-suggestions');
+            
+            if (!searchTerm) {
+                suggestionsContainer.classList.remove('show');
+                return;
+            }
+
+            const filteredSuggestions = searchSuggestions.filter(suggestion =>
+                suggestion.text.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+
+            if (filteredSuggestions.length === 0) {
+                suggestionsContainer.classList.remove('show');
+                return;
+            }
+
+            suggestionsContainer.innerHTML = filteredSuggestions.map(suggestion => `
+                <div class="suggestion-item" onclick="selectSuggestion('${suggestion.text}')">
+                    <span class="suggestion-icon">${suggestion.icon}</span>
+                    <span class="suggestion-text">${suggestion.text}</span>
+                    <span class="suggestion-category">${suggestion.category}</span>
+                </div>
+            `).join('');
+
+            suggestionsContainer.classList.add('show');
+        }
+
+        function selectSuggestion(suggestionText) {
+            const searchInput = document.getElementById('search-input');
+            searchInput.value = suggestionText;
+            searchProducts(suggestionText);
+            document.getElementById('search-suggestions').classList.remove('show');
+        }
+
+        function applyCurrentFilters() {
+            // Apply price filter
+            if (currentPriceFilter !== 'all') {
+                const [min, max] = currentPriceFilter.split('-').map(Number);
+                currentProducts = currentProducts.filter(product => 
+                    product.price >= min && product.price <= max
+                );
+            }
+
+            // Apply sort
+            if (currentSort !== 'default') {
+                sortProducts(currentSort, false);
+            } else {
+                renderProducts();
+            }
+        }
+
+        // Render produk
+        function renderProducts() {
+            const grid = document.getElementById('products-grid');
+            const noResults = document.getElementById('no-results');
+            const startIndex = (currentPage - 1) * productsPerPage;
+            const endIndex = startIndex + productsPerPage;
+            const productsToShow = currentProducts.slice(startIndex, endIndex);
+
+            grid.innerHTML = '';
+
+            if (currentProducts.length === 0) {
+                grid.style.display = 'none';
+                noResults.style.display = 'block';
+                updateResultsInfo();
+                updatePagination();
+                return;
+            }
+
+            grid.style.display = 'grid';
+            noResults.style.display = 'none';
+
+            productsToShow.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card fade-in';
+                productCard.innerHTML = `
+                    ${product.badge ? `<div class="badge ${product.badge}">${product.badgeText}</div>` : ''}
+                    <div class="product-image">
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 4rem; opacity: 0.3;">
+                            ${product.icon}
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">${highlightSearchTerm(product.title)}</h3>
+                        <div class="product-rating">
+                            <div class="stars">${'★'.repeat(Math.floor(product.rating))}${product.rating % 1 ? '☆' : ''}</div>
+                            <span class="rating-text">(${product.rating}/5 - ${product.reviews.toLocaleString()} review)</span>
+                        </div>
+                        <div class="product-price">Rp ${product.price.toLocaleString()}</div>
+                        <p class="product-description">${highlightSearchTerm(product.description)}</p>
+                        <ul class="product-features">
+                            ${product.features.map(feature => `<li>${highlightSearchTerm(feature)}</li>`).join('')}
+                        </ul>
+                        <button class="cta-button" onclick="handlePurchase('${product.title}')">Beli Sekarang</button>
+                    </div>
+                `;
+                grid.appendChild(productCard);
+            });
+
+            updateResultsInfo();
+            updatePagination();
+        }
+
+        // Highlight search term in text
+        function highlightSearchTerm(text) {
+            if (!currentSearchTerm) return text;
+            
+            const regex = new RegExp(`(${currentSearchTerm})`, 'gi');
+            return text.replace(regex, '<mark style="background: #fff3cd; padding: 0 2px; border-radius: 2px;">$1</mark>');
+        }
+
+        // Update info hasil
+        function updateResultsInfo() {
+            const resultsCount = document.getElementById('results-count');
+            const totalProducts = currentProducts.length;
+            const startIndex = (currentPage - 1) * productsPerPage + 1;
+            const endIndex = Math.min(currentPage * productsPerPage, totalProducts);
+            
+            resultsCount.textContent = `Menampilkan ${startIndex}-${endIndex} dari ${totalProducts} produk`;
+        }
+
+        // Update pagination
+        function updatePagination() {
+            const totalPages = Math.ceil(currentProducts.length / productsPerPage);
+            const paginationInfo = document.getElementById('pagination-info');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+
+            paginationInfo.textContent = `${currentPage}/${totalPages}`;
+            
+            prevBtn.classList.toggle('disabled', currentPage === 1);
+            nextBtn.classList.toggle('disabled', currentPage === totalPages);
+        }
+
+        // Sorting function
+        function sortProducts(sortType, shouldRender = true) {
+            currentSort = sortType;
+            currentPage = 1;
+
+            switch(sortType) {
+                case 'popular':
+                    currentProducts.sort((a, b) => b.popularity - a.popularity);
+                    break;
+                case 'newest':
+                    currentProducts.sort((a, b) => b.dateAdded - a.dateAdded);
+                    break;
+                case 'oldest':
+                    currentProducts.sort((a, b) => b.reviews - a.reviews);
+                    break;
+                case 'price-low':
+                    currentProducts.sort((a, b) => a.price - b.price);
+                    break;
+                case 'price-high':
+                    currentProducts.sort((a, b) => b.price - a.price);
+                    break;
+                default:
+                    if (!currentSearchTerm) {
+                        currentProducts = [...products];
+                    }
+            }
+
+            if (shouldRender) {
+                renderProducts();
+            }
+        }
+
+        // Filter by price
+        function filterByPrice(priceRange) {
+            currentPriceFilter = priceRange;
+            currentPage = 1;
+
+            // Start with search results or all products
+            if (currentSearchTerm) {
+                currentProducts = products.filter(product => 
+                    product.title.toLowerCase().includes(currentSearchTerm) ||
+                    product.description.toLowerCase().includes(currentSearchTerm) ||
+                    product.features.some(feature => feature.toLowerCase().includes(currentSearchTerm))
+                );
+            } else {
+                currentProducts = [...products];
+            }
+
+            // Apply price filter
+            if (priceRange !== 'all') {
+                const [min, max] = priceRange.split('-').map(Number);
+                currentProducts = currentProducts.filter(product => 
+                    product.price >= min && product.price <= max
+                );
+            }
+
+            // Re-apply current sort
+            if (currentSort !== 'default') {
+                sortProducts(currentSort, false);
+            }
+            
+            renderProducts();
+        }
+
+        // Handle purchase
+        function handlePurchase(productTitle) {
+            // Simulasi redirect atau action
+            alert(`Mengarahkan ke halaman pembelian untuk: ${productTitle}`);
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Search functionality
+            const searchInput = document.getElementById('search-input');
+            const searchBtn = document.getElementById('search-btn');
+            const clearSearchBtn = document.getElementById('clear-search');
+
+            searchInput.addEventListener('input', function(e) {
+                const searchTerm = e.target.value;
+                showSearchSuggestions(searchTerm);
+            });
+
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    searchProducts(this.value);
+                    document.getElementById('search-suggestions').classList.remove('show');
+                }
+            });
+
+            searchBtn.addEventListener('click', function() {
+                searchProducts(searchInput.value);
+                document.getElementById('search-suggestions').classList.remove('show');
+            });
+
+            clearSearchBtn.addEventListener('click', clearSearch);
+
+            // Popular tags
+            document.querySelectorAll('.popular-tag').forEach(tag => {
+                tag.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const searchTerm = this.dataset.search;
+                    searchInput.value = searchTerm;
+                    searchProducts(searchTerm);
+                });
+            });
+
+            // Hide suggestions when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.search-container')) {
+                    document.getElementById('search-suggestions').classList.remove('show');
+                }
+            });
+
+            // Sort buttons
+            document.querySelectorAll('.sort-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    sortProducts(this.dataset.sort);
+                });
+            });
+
+            // Price filter
+            document.getElementById('price-range').addEventListener('change', function() {
+                filterByPrice(this.value);
+            });
+
+            // Pagination
+            document.getElementById('prev-btn').addEventListener('click', function() {
+                if (currentPage > 1) {
+                    currentPage--;
+                    renderProducts();
+                }
+            });
+
+            document.getElementById('next-btn').addEventListener('click', function() {
+                const totalPages = Math.ceil(currentProducts.length / productsPerPage);
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    renderProducts();
+                }
+            });
+
+            // Initial render
+            renderProducts();
+        });
+
         // Smooth scrolling untuk navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -584,33 +1446,13 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.product-card').forEach(card => {
-            observer.observe(card);
-        });
-
         // Efek parallax ringan pada hero
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
             const hero = document.querySelector('.hero');
-            hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-        });
-
-        // Simulasi klik tombol CTA
-        document.querySelectorAll('.cta-button').forEach(button => {
-            button.addEventListener('click', function() {
-                const productTitle = this.closest('.product-card').querySelector('.product-title').textContent;
-                
-                // Efek visual
-                this.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    this.style.transform = 'scale(1)';
-                }, 150);
-                
-                // Simulasi redirect atau action
-                setTimeout(() => {
-                    alert(`Mengarahkan ke halaman pembelian untuk: ${productTitle}`);
-                }, 200);
-            });
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
         });
     </script>
 </body>
